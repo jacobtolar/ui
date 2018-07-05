@@ -54,5 +54,5 @@ test('it renders link to parent pipeline for child pipeline', function (assert) 
   this.set('scmMock', scmMock);
   this.render(hbs`{{pipeline-header pipeline=pipelineMock scmContext=scmMock}}`);
 
-  assert.equal($($('a').get(2)).text().trim(), 'Parent Pipeline');
+  assert.equal($($('a').get(4)).text().trim(), 'Parent Pipeline');
 });

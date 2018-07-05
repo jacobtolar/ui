@@ -1,6 +1,26 @@
 {{#link-to "pipeline" pipeline.id}}<h1>{{pipeline.appId}}</h1>{{/link-to}}
 <a href="{{pipeline.hubUrl}}" class="branch">{{fa-icon "code-fork"}} {{pipeline.branch}}</a>
 <span class="scm">{{fa-icon scmContext.scmIcon}} {{scmContext.scm}}</span>
+{{#bs-dropdown as |dd|}}
+  {{#dd.toggle}} <a class="toggler-text">Add to collection<span class="caret caret-display"></span></a>{{/dd.toggle}}
+  {{#dd.menu align="right" class="dropdown" as |menu|}}
+    {{#each collections as |collection|}}
+      {{#menu.item}}
+        <span onclick={{action "addToCollection" pipeline.id collection}}>
+          {{collection.name}}
+        </span>
+      {{/menu.item}}
+    {{/each}}
+    <li>
+      <span class="create-dropdown" onclick={{action "openModal"}}>
+        {{fa-icon "plus-circle" title="Create" size="md"}} CREATE
+      </span>
+    </li>
+  {{/dd.menu}}
+{{/bs-dropdown}}
+
 {{#if pipeline.configPipelineId}}
   {{fa-icon "cog"}} {{#link-to "pipeline" pipeline.configPipelineId}}Parent Pipeline{{/link-to}}
 {{/if}}
+{{collection-modal showModal=showModal addNewCollection=addNewCollection}}
+

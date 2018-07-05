@@ -6,6 +6,41 @@
   margin: 0;
   padding: 0 25px;
   white-space: nowrap;
+
+  .dropdown-menu > li { 
+
+    line-height: 22px;
+
+    > span {
+      cursor: pointer;
+      display: inline-block;
+      padding: 5px;
+      width: 100%;
+
+      &:hover {
+        background-color: $sd-highlight;
+        color: $sd-text;
+        opacity: 1;
+      }
+    }
+  }
+}
+
+div.dropdown {
+  position: absolute;
+  right: 25px;
+}
+.dropdown-menu {
+  max-height: 300px;
+  overflow: auto;
+}
+
+.toggler-text {
+  color: #3697F2;
+}
+
+div.dropdown {
+  display: inline;
 }
 
 &.is-build-page {
