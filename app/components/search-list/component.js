@@ -60,25 +60,9 @@ export default Component.extend({
     }
   }),
   actions: {
-    openModal() {
-      this.set('showModal', true);
-    },
-    addNewCollectionHelper() {
-      let addNewCollectionParent = this.get('addNewCollection');
-
-      addNewCollectionParent();
-    },
-    addToCollection(pipelineId, collection) {
-      return this.get('onAddToCollection')(+pipelineId, collection.id)
-        .then(() => {
-          this.set('addCollectionError', null);
-          this.set('addCollectionSuccess',
-            `Successfully added Pipeline to ${collection.get('name')}`);
-        })
-        .catch(() => {
-          this.set('addCollectionError', `Could not add Pipeline to ${collection.get('name')}`);
-          this.set('addCollectionSuccess', null);
-        });
+    messageHandler(success, err) {
+      this.set('addCollectionError', err);
+      this.set('addCollectionSuccess', success);
     }
   }
 });

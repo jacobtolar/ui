@@ -1,24 +1,23 @@
 <div class="row">
   {{#if session.isAuthenticated}}
-    {{collections-flyout 
+    {{collections-flyout
       class="col-md-2"}}
     {{search-list
       pipelines=pipelines
       collections=collections
-      onAddToCollection=(action "addToCollection")
       query=query
       class="col-md-10"
+      onAddToCollection=(action 'addToCollection')
     }}
   {{else}}
     {{search-list
       pipelines=pipelines
       collections=collections
-      onAddToCollection=(action "addToCollection")
       query=query
       name=name
       description=description
       errorMessage=errorMessage
-      addNewCollection=(action "addNewCollection") 
+      onAddToCollection=(action 'addToCollection')
     }}
   {{/if}}
 </div>

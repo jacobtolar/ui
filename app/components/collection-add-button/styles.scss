@@ -1,0 +1,26 @@
+& {
+  display: inline-block;
+  line-height: 20px;
+}
+
+& {
+  .add-to-collection {
+    border: none;
+  }
+
+  .dropdown-menu > li > span {
+    cursor: pointer;
+    display: inline-block;
+    padding: 5px;
+    width: 100%;
+
+
+    &:hover {
+      background-color: $sd-highlight;
+      color: $sd-text;
+      opacity: 1;
+    }
+  }
+}
+
+

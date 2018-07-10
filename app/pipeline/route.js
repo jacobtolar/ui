@@ -10,6 +10,11 @@ export default Route.extend(AuthenticatedRouteMixin, {
     return get(this, 'store').findRecord('pipeline', params.pipeline_id);
   },
 
+  setupController(controller, model) {
+    this._super(controller, model);
+    this.store.findAll('collection').then(c => controller.set('collection', c));
+  },
+
   actions: {
     error(error) {
       if (error.errors[0].status === 404) {

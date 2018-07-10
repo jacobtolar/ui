@@ -56,6 +56,12 @@ test('/create a pipeline: SUCCESS', function (assert) {
     JSON.stringify([])
   ]);
 
+  server.get('http://localhost:8080/v4/collections', () => [
+    200,
+    { 'Content-Type': 'application/json' },
+    JSON.stringify([])
+  ]);
+
   authenticateSession(this.application, { token: 'faketoken' });
 
   visit('/create');
